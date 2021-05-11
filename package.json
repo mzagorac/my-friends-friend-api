@@ -7,7 +7,7 @@
     "dev": "nodemon ./src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Milan Zagorac",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^9.0.2",
