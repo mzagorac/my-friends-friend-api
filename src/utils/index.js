@@ -8,12 +8,16 @@ function friends(id) {
 }
 
 function getAllFriendsOfMyFriends(id, myFriends) {
-  return myFriends
-    .reduce((acc, item) => {
-      const friendsFriends = friends(item.id).filter((f) => f.id !== id);
-      return [...acc, ...friendsFriends];
-    }, [])
-    .sort((a, b) => a.id - b.id);
+  try {
+    return myFriends
+      .reduce((acc, item) => {
+        const friendsFriends = friends(item.id).filter((f) => f.id !== id);
+        return [...acc, ...friendsFriends];
+      }, [])
+      .sort((a, b) => a.id - b.id);
+  } catch (error) {
+    throw error;
+  }
 }
 
 function removeMyDirectFriends(friends, friendsOfFriends) {
@@ -27,8 +31,10 @@ function removeDuplicate(arr) {
   }, []);
 }
 
+// I needed this function because basically friends which shows multiple times in the array "friendsOfFriends"
+// minus direct friends are suggested friends
 function getDuplicates(arr) {
-  const o = arr.reduce((acc, item, idx, arr) => {
+  const numOfInstances = arr.reduce((acc, item) => {
     let id = String(item.id);
 
     if (acc[id] >= 0) {
@@ -39,7 +45,7 @@ function getDuplicates(arr) {
     return acc;
   }, {});
 
-  return removeDuplicate(arr.filter((item) => o[item.id] > 0));
+  return removeDuplicate(arr.filter((item) => numOfInstances[item.id] > 0));
 }
 
 function exists(arr, id) {

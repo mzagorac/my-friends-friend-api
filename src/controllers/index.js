@@ -1,7 +1,7 @@
 const {
   getAllfriends,
-  friendsOfFriends,
-  suggestedFriends,
+  getAllFriendsOfFriends,
+  getAllsuggestedFriends,
 } = require("../services");
 
 function getFriends(req, res, next) {
@@ -17,13 +17,13 @@ function getFriends(req, res, next) {
 
 function getFriendsFriends(req, res) {
   const id = req.params.id;
-  const result = friendsOfFriends(Number(id));
+  const result = getAllFriendsOfFriends(Number(id));
   res.json(result);
 }
 
 function getSuggestedFriends(req, res) {
   const id = req.params.id;
-  const result = suggestedFriends(Number(id));
+  const result = getAllsuggestedFriends(Number(id));
   res.json(result);
 }
 

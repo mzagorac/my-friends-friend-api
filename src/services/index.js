@@ -10,7 +10,7 @@ function getAllfriends(id) {
   return friends(id);
 }
 
-function friendsOfFriends(id) {
+function getAllFriendsOfFriends(id) {
   const myFriends = friends(id);
 
   const allFriendsFriends = removeDuplicate(
@@ -22,7 +22,7 @@ function friendsOfFriends(id) {
   );
 }
 
-function suggestedFriends(id) {
+function getAllsuggestedFriends(id) {
   const myFriends = friends(id);
   const friendsOfFriends = getAllFriendsOfMyFriends(id, myFriends);
 
@@ -33,6 +33,6 @@ function suggestedFriends(id) {
 
 module.exports = {
   getAllfriends,
-  friendsOfFriends,
-  suggestedFriends,
+  getAllFriendsOfFriends,
+  getAllsuggestedFriends,
 };
